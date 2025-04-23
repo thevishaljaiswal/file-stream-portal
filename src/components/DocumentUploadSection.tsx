@@ -47,25 +47,24 @@ export const DocumentUploadSection: React.FC<DocumentUploadSectionProps> = ({
   };
 
   const onView = (file: File) => {
-    // Create a temporary object url and open in new tab
     const url = URL.createObjectURL(file);
     window.open(url, "_blank", "noopener");
     setTimeout(() => URL.revokeObjectURL(url), 5000);
   };
 
   return (
-    <div className="bg-gray-50 rounded-lg shadow-sm p-4">
-      <h2 className="font-semibold text-md text-violet-700 mb-2">{label}</h2>
+    <div className="bg-gray-50 rounded-md shadow-sm p-2">
+      <h2 className="font-semibold text-[15px] text-violet-700 mb-1">{label}</h2>
       <div
-        className="flex flex-col items-center gap-1 border-2 border-dashed border-violet-300 rounded-md py-4 px-2 bg-white hover:bg-violet-50/20 transition cursor-pointer mb-3"
+        className="flex flex-col items-center gap-1 border-2 border-dashed border-violet-200 rounded px-1.5 py-2 bg-white hover:bg-violet-50/20 transition cursor-pointer mb-2"
         onDragOver={(e) => e.preventDefault()}
         onDrop={onDrop}
         onClick={() => inputRef.current?.click()}
         role="button"
         tabIndex={0}
       >
-        <Upload size={24} className="text-violet-400 mb-1" />
-        <span className="text-sm font-medium text-violet-600">
+        <Upload size={18} className="text-violet-400 mb-0.5" />
+        <span className="text-xs font-medium text-violet-600">
           Upload Files
         </span>
         <input
@@ -79,9 +78,9 @@ export const DocumentUploadSection: React.FC<DocumentUploadSectionProps> = ({
           }}
         />
       </div>
-      <div className="space-y-1">
+      <div className="space-y-0.5">
         {files.length === 0 ? (
-          <p className="text-gray-400 text-xs italic pl-1">No files uploaded.</p>
+          <p className="text-gray-400 text-[11px] italic pl-1">No files uploaded.</p>
         ) : (
           files.map((file, idx) => (
             <UploadedFileItem
