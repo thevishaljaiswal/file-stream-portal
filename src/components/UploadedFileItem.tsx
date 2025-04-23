@@ -9,11 +9,11 @@ type UploadedFileItemProps = {
 };
 
 function getIconByType(type: string) {
-  if (type.startsWith("image/")) return <FileImage className="text-blue-400" />;
-  if (type.startsWith("video/")) return <FileVideo className="text-red-400" />;
-  if (type.startsWith("audio/")) return <FileAudio className="text-green-500" />;
-  if (type === "application/pdf") return <FileText className="text-rose-500" />;
-  return <File className="text-gray-400" />;
+  if (type.startsWith("image/")) return <FileImage className="text-blue-400 w-4 h-4" />;
+  if (type.startsWith("video/")) return <FileVideo className="text-red-400 w-4 h-4" />;
+  if (type.startsWith("audio/")) return <FileAudio className="text-green-500 w-4 h-4" />;
+  if (type === "application/pdf") return <FileText className="text-rose-500 w-4 h-4" />;
+  return <File className="text-gray-400 w-4 h-4" />;
 }
 
 export const UploadedFileItem: React.FC<UploadedFileItemProps> = ({
@@ -22,33 +22,32 @@ export const UploadedFileItem: React.FC<UploadedFileItemProps> = ({
   onDelete,
 }) => {
   return (
-    <div className="flex items-center justify-between gap-2 rounded px-3 py-2 bg-white border border-gray-200 shadow-sm hover:bg-gray-50">
-      <div className="flex items-center gap-2">
+    <div className="flex items-center justify-between gap-1 rounded-md px-2 py-1 bg-white border border-gray-100 hover:bg-gray-50">
+      <div className="flex items-center gap-2 min-w-0">
         {getIconByType(file.type)}
-        <div>
-          <span className="text-sm font-medium text-gray-900">{file.name}</span>
-          <span className="block text-xs text-gray-500">{Math.round(file.size/1024)} KB</span>
+        <div className="truncate">
+          <span className="text-xs font-medium text-gray-900 block truncate">{file.name}</span>
+          <span className="text-[10px] text-gray-500">{Math.round(file.size/1024)} KB</span>
         </div>
       </div>
       <div className="flex items-center gap-1">
         <button
-          className="p-1.5 rounded hover:bg-violet-100 text-violet-600"
+          className="p-1 rounded hover:bg-violet-50 text-violet-500"
           title="View"
           onClick={() => onView?.(file)}
           type="button"
         >
-          <Eye size={18} />
+          <Eye size={14} />
         </button>
         <button
-          className="p-1.5 rounded hover:bg-red-100 text-red-600"
+          className="p-1 rounded hover:bg-red-50 text-red-500"
           title="Delete"
           onClick={() => onDelete?.(file)}
           type="button"
         >
-          <Trash size={18} />
+          <Trash size={14} />
         </button>
       </div>
     </div>
   );
 };
-

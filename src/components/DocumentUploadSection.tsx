@@ -54,21 +54,20 @@ export const DocumentUploadSection: React.FC<DocumentUploadSectionProps> = ({
   };
 
   return (
-    <div className="bg-gray-50 rounded-xl shadow-md p-5 md:p-6">
-      <h2 className="font-semibold text-lg text-violet-700 mb-2">{label}</h2>
+    <div className="bg-gray-50 rounded-lg shadow-sm p-4">
+      <h2 className="font-semibold text-md text-violet-700 mb-2">{label}</h2>
       <div
-        className="flex flex-col items-center gap-2 border-2 border-dashed border-violet-400 rounded-lg py-8 px-4 bg-white hover:bg-violet-50 transition cursor-pointer mb-4"
+        className="flex flex-col items-center gap-1 border-2 border-dashed border-violet-300 rounded-md py-4 px-2 bg-white hover:bg-violet-50/20 transition cursor-pointer mb-3"
         onDragOver={(e) => e.preventDefault()}
         onDrop={onDrop}
         onClick={() => inputRef.current?.click()}
         role="button"
         tabIndex={0}
       >
-        <Upload size={32} className="text-violet-500 mb-2" />
-        <span className="text-md font-medium text-violet-700">
-          Drag & Drop files or <span className="underline text-violet-900">Click to Upload</span>
+        <Upload size={24} className="text-violet-400 mb-1" />
+        <span className="text-sm font-medium text-violet-600">
+          Upload Files
         </span>
-        <span className="text-xs text-gray-400">(PDF, Images, Docs, Videos, Audio...)</span>
         <input
           type="file"
           multiple
@@ -80,9 +79,9 @@ export const DocumentUploadSection: React.FC<DocumentUploadSectionProps> = ({
           }}
         />
       </div>
-      <div className="space-y-2">
+      <div className="space-y-1">
         {files.length === 0 ? (
-          <p className="text-gray-400 text-sm italic pl-1">No files uploaded yet.</p>
+          <p className="text-gray-400 text-xs italic pl-1">No files uploaded.</p>
         ) : (
           files.map((file, idx) => (
             <UploadedFileItem
@@ -97,4 +96,3 @@ export const DocumentUploadSection: React.FC<DocumentUploadSectionProps> = ({
     </div>
   );
 };
-
