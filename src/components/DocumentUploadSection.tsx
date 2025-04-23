@@ -53,18 +53,18 @@ export const DocumentUploadSection: React.FC<DocumentUploadSectionProps> = ({
   };
 
   return (
-    <div className="bg-gray-50 rounded-md shadow-sm p-2">
-      <h2 className="font-semibold text-[15px] text-violet-700 mb-1">{label}</h2>
+    <div className="bg-white rounded-lg shadow-md border border-gray-200 p-3">
+      <h2 className="font-semibold text-[15px] text-gray-800 mb-2">{label}</h2>
       <div
-        className="flex flex-col items-center gap-1 border-2 border-dashed border-violet-200 rounded px-1.5 py-2 bg-white hover:bg-violet-50/20 transition cursor-pointer mb-2"
+        className="flex flex-col items-center gap-1 border-2 border-dashed border-gray-300 rounded px-1.5 py-2 bg-gray-50 hover:bg-gray-100 transition cursor-pointer mb-2"
         onDragOver={(e) => e.preventDefault()}
         onDrop={onDrop}
         onClick={() => inputRef.current?.click()}
         role="button"
         tabIndex={0}
       >
-        <Upload size={18} className="text-violet-400 mb-0.5" />
-        <span className="text-xs font-medium text-violet-600">
+        <Upload size={18} className="text-gray-500 mb-0.5" />
+        <span className="text-xs font-medium text-gray-700">
           Upload Files
         </span>
         <input
